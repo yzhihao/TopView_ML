@@ -1,0 +1,2 @@
+# 安装mysqldb
+直接用命令`pip install mysql-connector`会出现Unable to find Protobuf include directory的问题，在[stackoverflow](http://stackoverflow.com/questions/43029672/unable-to-find-protobuf-include-directory)上有相关解决方案，为了省事采取第一条，下载版本为2.1.4的mysql-connector，即使用命令`pip install mysql-connector==2.1.4`
