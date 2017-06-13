@@ -15,9 +15,9 @@
 		* [Bug分支和Feature分支](#Bug分支和Feature分支)
 	* [标签管理](#标签管理)
 		* [创建标签和操作标签](#创建标签和操作标签)
-	* [利用cookie模拟登陆](#利用cookie模拟登陆)
 * [Github](#Github)
 	* [远程仓库](#远程仓库)
+		* [推送至远程库](#推送至远程库)
 		* [添加远程库](#添加远程库)
 		* [克隆远程库](#克隆远程库)
 * [Git常用命令](#Git常用命令)
@@ -277,6 +277,20 @@ $ git remote add origin git@github.com:username/xxxx.git
 ```
 `origin`**是远程库的名字**，这是Git默认的叫法，`username`表示用户名后面跟的是对应的Github仓库名称
 然后将本地库内容推送至远程库使用`git push -u origin master`**第一次推送要加上**`-u`**的参数**，之后推送直接用`git push origin master`
+
+<br />
+
+<div id="推送至远程库"></div>
+
+### 推送至远程库
+
+将本地库内容推送至远程库使用`git push -u origin master`**第一次推送要加上**`-u`**的参数**，之后推送直接用`git push origin master`  
+**master也可以换成其他分支**  
+```
+$ git push -u origin master
+
+$ git push origin master
+```
 
 <br />
 
