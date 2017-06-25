@@ -1,5 +1,8 @@
 # Python-MySQL
 
+[TOC]
+
+
 ## 安装MySQL(Mac安装教程)
 - 去[官网](https://www.mysql.com/)直接下载 MySQL Community Server、MySQL Workbench
 	- MySQL Workbench是可视化操作工具
