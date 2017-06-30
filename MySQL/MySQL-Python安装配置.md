@@ -1,8 +1,8 @@
 # Python-MySQL
 
-* [安装MySQL(Mac安装教程)](#安装MySQL(Mac安装教程)
+* [安装MySQL(Mac安装教程)](#安装MySQLMac安装教程)
 * [配置MySQL](#配置MySQL)
-* [安装MySQL Workbench](#安装MySQL Workbench))
+* [安装MySQL Workbench](#安装MySQL Workbench)
 * [安装MySQLdb库(python2.7)](#安装MySQLdb库(python2.7)
 * [安装pymysql(Python3.X)](#安装pymysql(Python3.X)
 * [shell脚本操作MySQL](#shell脚本操作MySQL)
