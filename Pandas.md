@@ -28,18 +28,18 @@ In[2]:import pandas as pd # 若pandas安装成功，在ipython中引入pandas会
 Backend MacOSX is interactive backend. Turning interactive mode on.
 In[3]:from pandas import DataFrame,Series
 # 以上都是约定成俗的引入方法
-In[4]:series\_1 = Series([1,2,3])
-In[5]:series\_1
+In[4]:series_1 = Series([1,2,3])
+In[5]:series_1
 Out[5]:
-In[5]:series\_1
+In[5]:series_1
 Out[5]:
 0    1
 1    2
 2    3
 dtype: int64
 #左边是索引从0开始，右边是元素的值
-In[6]:series\_2 = Series({'Name':'Chok','Class':'4','Age':'19'})
-In[7]:series\_2
+In[6]:series_2 = Series({'Name':'Chok','Class':'4','Age':'19'})
+In[7]:series_2
 Out[7]:
 Age        19
 Class       4
@@ -50,8 +50,8 @@ dtype: object
 # RangeIndex(start=0, stop=4, step=1)
 # 因此也可以用range对index赋值
 
-In[8]: series\_3 = Series({'Name':'Chok','Class':'4','Age':'19'},index = ['Name','Class','weight'])
-In[9]: series\_3
+In[8]: series_3 = Series({'Name':'Chok','Class':'4','Age':'19'},index = ['Name','Class','weight'])
+In[9]: series_3
 Out[9]:
 Name      Chok
 Class        4
