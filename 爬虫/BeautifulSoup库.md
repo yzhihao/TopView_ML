@@ -4,7 +4,7 @@
 * [BeautifulSoup中的对象](#BeautifulSoup中的对象)
 	* [bs4.BeautifulSoup](#BeautifulSoup//bs4.BeautifulSoup)
 	* [Tag(标签)](#bs4.element.Tag)
-	* [NavigableString(标签内非属性字符串)](#NavigableString(标签内非属性字符串) 即`tag.string`)
+	* [NavigableString(标签内非属性字符串)](#NavigableString标签内非属性字符串) 即`tag.string`)
 	* [bs4.element.Comment(注释)](#bs4.element.Comment(注释))
 
 ## 简介
