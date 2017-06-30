@@ -1,7 +1,12 @@
 # requests库
 
+* [一、get()方法](#一、get()方法)
+* [二、post()方法](#二、post()方法)
+
+
 ## 一、get()方法
 #### 在写爬虫时基本用的是requests的get方法
+
 - requests.get(url,\*params,\*headers，\*timeout)
 	- url 为要爬去的网页链接
 	- params 可以在url链接后增加一些参数(可以用来翻页或者修改查询关键字)
@@ -9,7 +14,7 @@
 	- proxies 设置代理
 	- timeout 是设置响应时间
 
-```
+```python
 import requests
 try：
 	user_agent = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.81 Safari/537.36"
@@ -20,7 +25,9 @@ try：
 except：
 	print web.status_code
 ```
+
 #### requests.get()返回response对象
+
 - web.stauts\_code 返回状态码 200 为响应成功
 - web.raise\_for\_status() 若返回状态码不为200，则抛出异常(一般get方法都是放在try except 里面)
 - web.text 返回响应内容，即页面的html 还有 json
@@ -30,6 +37,7 @@ except：
 
 ## 二、post()方法
 #### 把数据放在header提交
+
 - 用法和get()类似
 
 比较：post 比 get 更安全,因为通过get提交数据，密码用户名直接出现在url，不安全

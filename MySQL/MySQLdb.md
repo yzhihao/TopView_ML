@@ -1,6 +1,11 @@
 # MySQLdb
 
-[TOC]
+* [MySQLdb的特点](#MySQLdb的特点)
+* [MySQLdb.connect](#MySQLdb.connect)
+* [connect](#connect)
+* [关于fetch](#关于fetch)
+* [记得关闭](#记得关闭)
+
 
 ## MySQLdb的特点
 - MySQLdb和JDBC有不一样的地方就是**事务处理commit和rollback**
@@ -23,33 +28,36 @@
 - charset:数据库编码
 
 
-```
+```python
 In[2]:import MySQLdb
 In[3]:connect = MySQLdb.connect(host='localhost',port=3306,user = 'root',passwd ='1.2.3.',db = 'TESTDB')
 
 ```
+
 ## connect
 #### connect.cursor()  游标
+
 - `connect.cursor()`用于执行命令
 
 #### 关于`execute`和`executemany`
-	- `connect.cursor().execute(SQL，param)`执行sql语句
 
-	- `connect.cursor().executemany(SQL，param)`执行多条sql语句
+- `connect.cursor().execute(SQL，param)`执行sql语句
 
-		- 在使用executemany时，变量都用%s占位，param是一个装有数据的元组元组
+- `connect.cursor().executemany(SQL，param)`执行多条sql语句
 
-		- 在执行多次操作时executemany比用execute循环操作快的多
+	- 在使用executemany时，变量都用%s占位，param是一个装有数据的元组元组
 
-		- 在执行update/insert/delete操作后数据库并没有马上更新，还需要`connect.commit()`数据库内容才会更新
+	- 在执行多次操作时executemany比用execute循环操作快的多
 
-		- 同理在执行查询的时候，也要cursor().fetchall()才可以返回数据
+	- 在执行update/insert/delete操作后数据库并没有马上更新，还需要`connect.commit()`数据库内容才会更新
 
-		- `connect.cursor().execute(SQL)`也可以创建一个新表	
+	- 同理在执行查询的时候，也要cursor().fetchall()才可以返回数据
+
+	- `connect.cursor().execute(SQL)`也可以创建一个新表
 
 
 
-````
+``` python
 In[4]: db.execute("INSERT INTO EMPLOYEE VALUE ('ChokJohn', 'Lee', 19, 'M', 2000)")# 插入
 Out[4]: 1L
 In[5]: conn.commit()
@@ -66,6 +74,7 @@ Out[8]: 1L
 In[9]: db.execute('select * from EMPLOYEE')# 查询
 In[10]: db.fetchall()
 Out[10]: ('ChokJohn', 'Lee', 19L, 'M', 666.0)
+```
 
 ## 关于fetch
 
@@ -77,10 +86,13 @@ Out[10]: ('ChokJohn', 'Lee', 19L, 'M', 666.0)
 
 - cursor.scroll(self, value, mode=):移动指针到某一行.
 	- mode='relative',则表示从当前所在位置**向后**移动value条
+
 	- mode='absolute',则表示从结果集的第一条开始**向后**移动value条.
+
 	- scroll只移动指针不返回数据，故要获取数据还得用上面三个fetch的其中一个
 
 ## 记得关闭
+
 - 若不需要连接数据库时应要关闭，包括cursor
 
 - 关闭只需调用cursor.close()和connection.close()
