@@ -127,7 +127,7 @@ print pd.merge(left1,right1,left_on=['key','key2'],right_index=True)
 
 还可以同时使用合并双方的索引，这里就不再赘述。
 
-DataFrame还提供一个**`join`实例方法**，它能更为方便的实现按索引合并。不仅如此，它还可以用于合并多个带有相同或相似索引的DataFrame对象，而不管它们之间是否有重叠的列。
+DataFrame还提供一个** `join`实例方法 **，它能更为方便的实现按索引合并。不仅如此，它还可以用于合并多个带有相同或相似索引的DataFrame对象，而不管它们之间是否有重叠的列。
 ```python
 left1=pd.DataFrame({'value':range(3)},index=list('ace'))
 right1=pd.DataFrame({'value':[int(x*10) if x<1 and x>-1 else int(x) for x in np.random.randn(5).flat ]},index=list('abcde'))
@@ -153,9 +153,9 @@ c         1.0           -1
 d         NaN           -4
 e         2.0            3
 ```
-DataFrame的join方法是在连接键上做**左连接**(left_on)。
+DataFrame的join方法是在连接键上做** 左连接 **(left_on)。
 
-它还支持**参数DataFrame的索引**跟**调用者DataFrame的某个列**之间的连接，同样也是通过on参数实现
+它还支持** 参数DataFrame的索引 **跟** 调用者DataFrame的某个列 **之间的连接，同样也是通过on参数实现
 ```python
 left1=pd.DataFrame({'key':list('aabbcc'),'value':range(6)},index=list('gghhjj'))
 right1=pd.DataFrame({'key':list('def'),'value':range(3)},index=list('abc'))
@@ -186,12 +186,12 @@ j        c           5         f            2
 ```
 可以发现，`left1`的连接键是'key'，而`right1`的连接键是索引。
 
-我们还可以向`join`函数传入一组DataFrame以实现**多个DataFrame的合并**，这组DataFrame常用**列表**表示。
+我们还可以向`join`函数传入一组DataFrame以实现** 多个DataFrame的合并 **，这组DataFrame常用** 列表 **表示。
 
 ### 轴向连接
 
 ##### 关于NumPy数组的合并
-另一种数据合并运算也被称为连接（concatenation），绑定（binding），或堆叠（stacking）。NumPy有一个用于**合并原始NumPy数组**的**concatenation函数**：
+另一种数据合并运算也被称为连接（concatenation），绑定（binding），或堆叠（stacking）。NumPy有一个用于** 合并原始NumPy数组 **的** concatenation函数 **：
 ```python
 arr = np.arange(12).reshape((3,4))
 print arr
@@ -211,7 +211,7 @@ print np.concatenate([arr,arr],axis=1)
 
 对于pandas对象，带有标签的轴能让我们进一步推广数组的连接运算。
 
-pandas提供**`concat`函数**来让我们对pands对象进行连接操作。
+pandas提供** `concat`函数 **来让我们对pands对象进行连接操作。
 假设我们有三个没有重叠索引的Series：
 ```python
 s1=pd.Series([0,1],index=['a','b'])
@@ -246,7 +246,7 @@ e  NaN  4.0  NaN
 f  NaN  NaN  5.0
 g  NaN  NaN  6.0
 ```
-从这里我们可以看出，不同于join或者merge，它默认的合并方式是"outer"，在这里，我们可以通过传入参数**`join='inner'`**来得到它们的交集：
+从这里我们可以看出，不同于join或者merge，它默认的合并方式是"outer"，在这里，我们可以通过传入参数** `join='inner'` **来得到它们的交集：
 ```python
 s4=pd.concat([s1 * 5,s3])
 print s4
@@ -270,7 +270,7 @@ g  NaN  6
 a  0  0
 b  1  5
 ```
-我们还可以通过**`join_axes`**指定要在其它轴上使用的索引：
+我们还可以通过** `join_axes` **指定要在其它轴上使用的索引：
 ```python
 print s1,'\n',s4
 
@@ -292,7 +292,7 @@ b  1.0  5.0
 g  NaN  6.0
 ```
 
-我们可以使用**keys**参数在连接轴上创建一个层次化索引，以区分参与连接的片段：
+我们可以使用** keys **参数在连接轴上创建一个层次化索引，以区分参与连接的片段：
 ```python
 print s1,'\n',s3
 
@@ -361,7 +361,7 @@ c   4   5   7.0  8.0
 ```
 可以发现，在keys参数就算传入了多个列头，也只有对应数量的列头会被使用，"df3"在上面的例子中就被省略掉了。
 
-如果往concat里面传入的是一个**字典**，那么**字典的键**就会被当作keys选项的值：
+如果往concat里面传入的是一个** 字典 **，那么** 字典的键 **就会被当作keys选项的值：
 ```python
 print pd.concat({'level1':df1,'level2':df2},axis=1)
 >>  level1     level2     
@@ -370,7 +370,7 @@ a      0   1    5.0  6.0
 b      2   3    NaN  NaN
 c      4   5    7.0  8.0
 ```
-此外，还可以传入**names参数**可以为列头编名：
+此外，还可以传入** names参数 **可以为列头编名：
 ```python
 print pd.concat({'level1':df1,'level2':df2},axis=1,names=['line1','line2'])
 >>line1 level1     level2     
@@ -379,7 +379,7 @@ a          0   1    5.0  6.0
 b          2   3    NaN  NaN
 c          4   5    7.0  8.0
 ```
-如果DataFrame行索引与分析工作无关，我们可以传入**`ignore_index=True`**来使其无效化:
+如果DataFrame行索引与分析工作无关，我们可以传入** `ignore_index=True` **来使其无效化:
 ```python
 print df1,'\n',df2
 >>   one  two
