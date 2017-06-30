@@ -1,7 +1,7 @@
 # Pandas
 
 
-* [Pandas 对象](#Pandas 对象)
+* [Pandas 对象](#Pandas对象)
 	* [Series](#Series)
 	* [DateFrame](#DateFrame)
 	* [索引对象](#索引对象)
