@@ -1,15 +1,29 @@
 # Pandas
 
-[TOC]
+
+* [Pandas 对象](#Pandas 对象)
+	* [Series](#Series)
+	* [DateFrame](#DateFrame)
+	* [索引对象](#索引对象)
+* [操作](#操作)
+	* [广播](#广播)
+	* [函数](#函数)
+	* [处理缺失值](#处理缺失值)
+	* [排序](#排序)
+	* [重复的轴索引](#重复的轴索引)
+	* [统计方法](#统计方法)
+
+
 
 
 ## Pandas 对象
 ### Series
 #### 类似于一个一维数组按列摆放，左边是索引(索引默认是自然数)，右边是数据。若传入对象是字典，则默认键是索引，值是数据(默认数据类型为object)。
 #### 创建方法
+
 - Series(data = [],index = [])/Series([]/{})
 
-```
+```python
 In[2]:import pandas as pd # 若pandas安装成功，在ipython中引入pandas会有下面这句话
 Backend MacOSX is interactive backend. Turning interactive mode on.
 In[3]:from pandas import DataFrame,Series
@@ -45,7 +59,9 @@ weight     NaN
 dtype: object
 # 若替换有字典生成的Series对象的索引时，新索引和字典的键相匹配的值会找出来，未找到的值结果为NAN(可以用isnull()、notnull()判断数据是否缺失)
 ```
+
 #### name属性
+
 - Series/Series.index还有name属性,可以直接通过赋值去修改
 
 
@@ -55,13 +71,14 @@ dtype: object
 #### DataFrame是一个表格型的数据结构，既有行索引，也有列索引（表头）
 <br/>
 #### 创建方法DataFrame()
+
 - 传入一个由 键- 数组/列表/元组 组成的字典,每个序列变成一列
 - - 由Series组成的字典，每个Series变成一列（如没有显式的指定索引，则各Series索引合并的结果作为行索引）
 - 传入二维ndarray(**传入的元素都是值**，如有需要，你可以传入索引)
 - 由字典或Series组成的列表
 - 由字典组成的字典
 
-```
+```python
 In[10]:import numpy as np
 # 键 - 列表 组成的字典
 In[11]:df1 = DataFrame({'a':[1,2,3],'b':[4,5,6],'c':[7,8,9]},index = ,'f'])
@@ -97,14 +114,17 @@ Class    4     3     2
 Name   Lee  Chok  John
 
 ```
+
 #### DateFrame.reindex(index,fill\_value = NAN,method = , column = )
 
 
 #### 删除操作
+
 - 使用DataFrame.drop([index...])可以删除特定轴以及它的值
 - 使用Series.drop([index...])可以删除特定轴以及轴上的值
 
 #### 索引、选取和过滤
+
 - DataFrame索引是获取列,
 - DataFrame切片是选取行，不包括末尾而Series的切片是**包含末尾**的
 - DataFrame、Series都可以可以用条件索引（实质是用布尔型数组进行索引）
@@ -112,6 +132,7 @@ Name   Lee  Chok  John
 - Series可以通过给定的索引值(默认会有自然数索引存在，即使显示的修改了index)
 
 #### DataFrame数据对齐
+
 - 若存在不同索引对，则结果为的索引是运算双方索引的并集，并且对；令不重叠的索引值为NAN
 - 与Series一样，若使用DF1.add(DF2,fill\_values = )可以设置缺失值
 
@@ -119,15 +140,17 @@ Name   Lee  Chok  John
 
 ### 索引对象
 #### 每个DataFrame和Series都有一个index(DataFrame还有colums对象），index对象不可修改
+
 - index对象的实质是把构建DataFrame和Series的那些数组和其他序列转化成一个numpy数组
 
 #### 多重索引
+
 - 使用DataFrame.set\_index(keys, drop=True, append=False, inplace=False, verify\_integrity=False)设置多重索引
 - 可以用ix来索引也可以用[:,:,key]来使用内层索引来获取索引值
 - swaplevel(,)可以交换两个索引的层次(level)
 
 
-```
+```python
 
 In[18]: df5 = df4.T
 In[19]: df5.index.name = 'NO.'
@@ -151,42 +174,55 @@ Age   Age NO.
 <br/>
 <br/>
 #### 列与行索引转化
+
 - 用set\_index()传入一列，可以把列变成行索引，默认删除该行，若想保留则令drop=False即可
 - reset\_index()功能与set\_index相反
 
 ## 操作
 
 ### 广播
+
 - 当Series和DataFrame 列数或行数相等时，两者运算会广播
 
 - - -
 
 ### 函数
+
 - numpy的函数可以操作pandas例如 np.abs(df2)
 - DataFrame.apply(func,axis = )可以对按某一轴**(只有0和1，0是对每列，1是对每行)**使用函数
 - DataFrame.applymap()用法与apply类似，但操作的对象是**元素**而不是某一**行或列**
+
 - - -
 ### 处理缺失值
 #### 判断是否有缺失值
+
 - isnull()、notnull()
+
 #### 处理
+
 - #### DateFrame.reindex(index,fill\_value = NAN,method =  )
+
 	- 该方法可以重新设置索引，若索引值当前不存在，则引入缺失值（fill\_value）
-	- method可以设置如何填充（ffill/pad）向前填充/搬运值，(bfill/backfill)后向填充/搬运值 
+	- method可以设置如何填充（ffill/pad）向前填充/搬运值，(bfill/backfill)后向填充/搬运值
+
 - #### 去除缺失值DateFrame.dropna(axis = ,how = ,thresh = ,)
+
 	- axis 是选定轴，只有0或1
 	- how 可以传入 all 或 any all指的是如果该行**全部是NAN**则删除该行，any则是该行**有一个NAN**都会删除该行
 	- thresh 给一个整数，若该行非NAN数据个数小于给的数，则删除该行
+
 - #### DataFrame.fillna(value = )
 	- 把NAN替换为value
 
 - - -
 ### 排序
 #### 对索引/列名排序
+
 - sort\_index(axis = ，ascending = True) 当axis=0时，对行索引排序，当axis=1对列名排序,默认升序，若要降序令ascending = False即可
 
 
 #### 对值排序
+
 - Series.sort\_values(axis=0, ascending=True,inplace = False, kind='quicksort', na\_position='last'）
 	-   axis 选择轴
 	-   ascending 升序(True)还是降序(False)
@@ -216,7 +252,7 @@ Age   Age NO.
 	- pct 把排名变成0-1范围内
 
 
-```
+```python
 In[23]: frame  = DataFrame({'b':[4.3,7,-3,2],'a':[0,1,0,1],'c':[-2,5,8,-2.5]})
 In[24]: frame
 Out[24]:
@@ -261,9 +297,11 @@ Out[28]:
 
 - - -
 ### 重复的轴索引
+
 - 若每个轴索引互异，则Series索引的对象为标量值，否则返回一个Series,DataFrame 类似
 
 - - -
+
 ### 统计方法
 | 方法 | 描述 |
 |--------|--------|
