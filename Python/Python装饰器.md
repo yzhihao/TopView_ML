@@ -14,9 +14,9 @@
 
 ```python
 In[2]:def fun1(a,b,c):
-		print(c)
-		print(b)
-		print(a)
+	print(c)
+	print(b)
+	print(a)
 
 In[3]:fun1(3,2,1)
 1
@@ -62,10 +62,10 @@ c = 3
 
 ```python
 In[7]:def fun3(*numbers):
-		sum = 0
-		for i in numbers:
-			sum = sum + i
-		print(sum)
+	sum = 0
+	for i in numbers:
+		sum = sum + i
+	print(sum)
 
 In[8]:fun3(1,2,3)
 6
@@ -125,15 +125,15 @@ B （Built-in） 内建作用域
 ```python
 In[13]:x = 10
 In[14]:def fun6():
-		x = 5
-		print(x)
+	x = 5
+	print(x)
 In[15]:fun6()
 5
 
 In[16]:var = 10
 In[17]:def fun7():
-		  var = var + 1
-		  return var
+	var = var + 1
+	return var
 
 In[18]:print fun7()
 UnboundLocalError: local variable 'var' referenced before assignment
@@ -152,13 +152,13 @@ In[21]:print var
 若想在内部函数修改外部函数的变量用 nonlocal (python 3)
 In[22]:x = 10
 In[23]:def fun8():
-		x = 5
-		def fun9():
-			nonlocal x
-			x = x + 10
-			print("inner:", x)
-		fun9()
-		print("outer:", x)
+	x = 5
+	def fun9():
+		nonlocal x
+		x = x + 10
+		print("inner:", x)
+	fun9()
+	print("outer:", x)
 
 In[24]:fun8()
 inner: 3
@@ -284,15 +284,15 @@ def print_time(func):
 
 ```python
 In[29]:class C:
-		@property
-		def x(self):
-			return self.__x
-		@x.setter
-		def x(self, value):
-			self.__x = value
-		@x.deleter
-		def x(self):
-			del self.__x
+	@property
+	def x(self):
+		return self.__x
+	@x.setter
+	def x(self, value):
+		self.__x = value
+	@x.deleter
+	def x(self):
+		del self.__x
 
 In[30]:a = C()
 In[31]:a.x = 100
