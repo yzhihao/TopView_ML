@@ -1,4 +1,4 @@
-# Pyhon 装饰器
+# Python 装饰器
 * [从函数参数说起](#从函数参数说起)
 * [几个关于函数的基本概念](#几个关于函数的基本概念)
 * [闭包](#闭包)
@@ -250,7 +250,6 @@ def a(arg):
 			func()
 		return newfunc
 	return add
-其实质是先返回装饰器的装饰器，再用来装饰函数
 
 如果要装饰带参数的函数 那么在newfunc(*arg,**kwarg),内层函数调用func(*arg,**kwarg)
 
@@ -276,6 +275,24 @@ def print_time(func):
 
 ```
 
+## 类装饰器的实现
+- #### 以@property为例
+
+```python
+class MyProperty(object) :
+        def __init__(self, method) :
+                self.method = method
+                self.method_dict = self.method()
+
+        def __get__(self, obj, type=None) :
+                return self.method_dict['fget'](obj)
+
+        def __set__(self, obj, val) :
+                self.method_dict['fset'](obj, val)
+
+类装饰器的实质就是把类方法传入到装饰器的构造函数中进行实例化，返回一个以类方法命名的一个装饰器（其实是MyProperty的一个实例对象，于是便可以通过.来访问类里面的其他装饰器）
+
+```
 
 
 ## 内置的装饰器
@@ -304,7 +321,7 @@ In[33]:del a.x
 ```
 
 
-- ### @classmethon
+- ### @classmethod
 	- 可以用来定义类方法
 	- 类方法是指不用实例就可以掉用的方法
 
