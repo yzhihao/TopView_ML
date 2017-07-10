@@ -4,7 +4,7 @@ MongoDB在默认情况下是不开启权限认证的，所以我们可以直接�
 1. auth
 2. keyfile
 
-##auth
+## auth
 
 ##### 添加配置文件
 
