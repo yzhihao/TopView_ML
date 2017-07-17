@@ -1,3 +1,25 @@
+
+---
+title : BeautifulSoup库
+date : 2017-07-10 09:00:00
+tag :
+	- BeautifulSoup
+categories : 爬虫
+keywords :
+	- javascript
+	- hexo
+clearReading : true
+thumbnailImage : WechatIMG3.jpeg
+thumbnailImagePosition : right
+autoThumbnailImage : yes
+metaAlignment : center
+coverImage : cover.jpg
+coverCaption : "A beautiful sunrise"
+coverMeta : out
+comments : false
+mathjex : true
+---
+<!-- excerpt -->
 # BeautifulSoup
 
 * [简介](#简介)
@@ -12,7 +34,7 @@
 - Beautiful Soup提供一些简单的、python式的函数用来处理导航、搜索、修改分析树等功能。
 - Beautiful Soup自动将输入文档转换为Unicode编码，输出文档转换为utf-8编码。你不需要考虑编码方式，除非文档没有指定一个编码方式
 - Beautiful Soup已成为和lxml、html6lib一样出色的python解释器，为用户灵活地提供不同的解析策略或强劲的速度。
-
+<!-- more -->
 	```python
 	In[2]:from bs4 import BeautifulSoup#常见的引入方式
 	In[3]:soup = BeautifulSoup(text,'html.parser')#text为网页源码，'html.parser'是html解析器

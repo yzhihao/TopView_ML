@@ -1,5 +1,28 @@
-# Python 文件操作
 
+---
+title : Python文件操作
+date : 2017-07-10 09:00:00
+tag :
+	- 文件操作
+categories : Python
+keywords :
+	- javascript
+	- hexo
+clearReading : true
+thumbnailImage : WechatIMG3.jpeg
+thumbnailImagePosition : right
+autoThumbnailImage : yes
+metaAlignment : center
+coverImage : cover.jpg
+coverCaption : "A beautiful sunrise"
+coverMeta : out
+comments : false
+mathjex : true
+---
+<!-- excerpt -->
+
+# Python 文件操作
+<!-- more -->
 * [打开文件](#打开文件)
 * [读取](#读取)
 * [写入](#写入)

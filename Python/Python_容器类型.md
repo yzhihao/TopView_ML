@@ -1,5 +1,28 @@
-# Python基础之容器类型
 
+---
+title : Python容器类型
+date : 2017-07-10 09:00:00
+tag :
+	- 容器类型
+categories : Python
+keywords :
+	- javascript
+	- hexo
+clearReading : true
+thumbnailImage : WechatIMG3.jpeg
+thumbnailImagePosition : right
+autoThumbnailImage : yes
+metaAlignment : center
+coverImage : cover.jpg
+coverCaption : "A beautiful sunrise"
+coverMeta : out
+comments : false
+mathjex : true
+---
+<!-- excerpt -->
+
+# Python基础之容器类型
+<!-- more -->
 * [列表](#列表)
 * [元组](#元组)
 * [字典](#字典)
